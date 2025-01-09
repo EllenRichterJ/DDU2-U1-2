@@ -42,4 +42,9 @@ findCity();
 // Recommended: constants with references to existing HTML-elements
 
 // Recommended: Ask for the city name and then the rest of the code
+function findNearestAndFarthestCity(cityFinder) {
+    let minDistance = Infinity;
+    let maxDistance = 0;
+    let closestCityIndex = -1;
+    let farthestCityIndex = -1;
 
