@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: skyblue;
+  background-color: #FFFAEC;
   margin: 20px;
 }
 
@@ -19,21 +19,36 @@ body {
 
 #cities .cityBox {
   padding: 3px 6px;
-  background-color: lightgrey;
+  background-color: #FFFAEC;
   border-radius: 5px;
 }
 
-#cities .target, #cities .closest, #cities .furthest { color: white }
-#cities .target { background-color: black; }
-#cities .closest { background-color: green;}
-#cities .furthest { background-color: blue; }
+#cities .target,
+#cities .closest,
+#cities .furthest {
+  color: #FFFAEC
+}
+
+#cities .target {
+  background-color: #213630;
+}
+
+#cities .closest {
+  background-color: #578E7E;
+}
+
+#cities .furthest {
+  background-color: #3b6055;
+}
 
 h1 {
   text-align: center;
   margin: 20px 0;
 }
 
-h2, h3, p {
+h2,
+h3,
+p {
   text-align: center;
 }
 
@@ -48,7 +63,7 @@ h2, h3, p {
   text-decoration: none;
   color: black;
   flex-basis: 200px;
-  background-color: lightgrey;
+  background-color: #FFFAEC;
   border-radius: 5px;
   text-align: center;
 }
@@ -58,7 +73,7 @@ main {
   min-width: 900px;
   max-width: 1300px;
   margin: auto;
-  background-color: aliceblue;
+  background-color: #f7efdc;
   border-radius: 20px;
   padding: 20px;
 }
@@ -78,7 +93,8 @@ main {
   text-align: center;
 }
 
-#table .head_row, #table .head_column {
+#table .head_row,
+#table .head_column {
   font-size: var(--fsz);
   font-weight: bold;
 }
@@ -89,5 +105,5 @@ main {
 }
 
 #table .even_col {
-  background-color: #ddd;
+  background-color: #FFFAEC;
 }
