@@ -112,3 +112,24 @@ function createDistanceTable() {
         tableContainer.appendChild(cityHeader);
     }
 
+    // Skapa rader för varje stad
+    for (let row = 0; row < numberOfCities; row++) {
+        const rowHeader = document.createElement("div");
+        rowHeader.classList.add("cell", "head_row");
+        rowHeader.textContent = `${row}-${cities[row].name}`; // Stadenamn och index
+        tableContainer.appendChild(rowHeader);
+
+        // Sätt "even_row" CSS-klassen för varannan rad (för att ge olika bakgrundsfärg om du vill)
+        if (row % 2 === 0) {
+            rowHeader.classList.add("even_row");
+        }
+
+        // Skapa kolumnceller för varje stad
+        for (let col = 0; col < numberOfCities; col++) {
+            const distanceCell = document.createElement("div");
+            distanceCell.classList.add("cell");
+
+            // Sätt "even_row" CSS-klassen för varannan kolumn (för att ge olika bakgrundsfärg om du vill)
+            if (col % 2 === 0) {
+                distanceCell.classList.add("even_col");
+            }
