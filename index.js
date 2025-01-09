@@ -133,3 +133,35 @@ function createDistanceTable() {
             if (col % 2 === 0) {
                 distanceCell.classList.add("even_col");
             }
+
+            // Om raden är samma som kolumnen (dvs. staden är samma), lämna cellen tom
+            if (row === col) {
+                distanceCell.textContent = " ";
+            } else {
+                let distance = null;
+
+                // Gå igenom alla avstånd och hitta avståndet mellan städerna
+                for (let i = 0; i < distances.length; i++) {
+                    if (distances[i].city1 === row && distances[i].city2 === col) {
+                        distance = distances[i];
+                    }
+                    if (distances[i].city1 === col && distances[i].city2 === row) {
+                        distance = distances[i];
+                    }
+                }
+
+                // Om vi har hittat ett avstånd, sätt det i cellen
+                if (distance !== null) {
+                    distanceCell.textContent = distance.distance / 10; // Visa avståndet utan avrundning
+                } else {
+                    distanceCell.textContent = ""; // Lämna cellen tom om inget avstånd finns
+                }
+            }
+
+            tableContainer.appendChild(distanceCell);
+        }
+    }
+}
+
+createDistanceTable();
+
