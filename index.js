@@ -1,4 +1,3 @@
-// Recommended: All functions declared here
 function createCityBoxes(cityName) {
     const cityBoxDiv = document.createElement("div");
     cityBoxDiv.classList.add("cityBox");
@@ -8,7 +7,6 @@ function createCityBoxes(cityName) {
 
 function displayAllCities() {
     const citiesContainer = document.getElementById("cities");
-
     for (let i = 0; i < cities.length; i++) {
         createCityBoxes(cities[i].name);
     }
@@ -39,28 +37,23 @@ function findCity() {
     }
 }
 findCity();
-// Recommended: constants with references to existing HTML-elements
 
-// Recommended: Ask for the city name and then the rest of the code
 function findNearestAndFarthestCity(cityFinder) {
     let minDistance = Infinity;
     let maxDistance = 0;
     let closestCityIndex = -1;
     let farthestCityIndex = -1;
 
-    // Gå igenom alla avstånd
     for (let i = 0; i < distances.length; i++) {
         const distance = distances[i];
         let otherCityIndex = -1;
 
-        // Kontrollera om cityFinder matchar någon av städerna
         if (cityFinder === cities[distance.city1].name) {
             otherCityIndex = distance.city2;
         } else if (cityFinder === cities[distance.city2].name) {
             otherCityIndex = distance.city1;
         }
 
-        // Om staden matchar, kontrollera avståndet
         if (otherCityIndex !== -1) {
             if (distance.distance < minDistance) {
                 minDistance = distance.distance;
@@ -73,7 +66,6 @@ function findNearestAndFarthestCity(cityFinder) {
         }
     }
 
-    // Uppdatera informationen för närmaste stad
     if (closestCityIndex !== -1) {
         const cityDivs = document.querySelectorAll(".cityBox");
         cityDivs[closestCityIndex].classList.add("closest");
@@ -82,7 +74,6 @@ function findNearestAndFarthestCity(cityFinder) {
         document.getElementById("closest").textContent = `${cities[closestCityIndex].name}`;
     }
 
-    // Uppdatera informationen för längsta stad
     if (farthestCityIndex !== -1) {
         const cityDivs = document.querySelectorAll(".cityBox");
         cityDivs[farthestCityIndex].classList.add("furthest");
@@ -94,53 +85,45 @@ function findNearestAndFarthestCity(cityFinder) {
 
 function createDistanceTable() {
     const tableContainer = document.getElementById("table");
-    tableContainer.innerHTML = ''; // Rensa tidigare innehåll i tabellen
+    tableContainer.innerHTML = '';
 
     const numberOfCities = 39;
 
-    // Skapa den första cellen som är tom (rubrik i övre vänstra hörnet)
     const emptyHeader = document.createElement("div");
     emptyHeader.classList.add("cell", "head_column");
     emptyHeader.textContent = "";
     tableContainer.appendChild(emptyHeader);
 
-    // Skapa rubrikrader för varje stad (i första raden)
     for (let i = 0; i < numberOfCities; i++) {
         const cityHeader = document.createElement("div");
         cityHeader.classList.add("cell", "head_column");
-        cityHeader.textContent = i; // Här sätts index för städer (kan ändras till stadens namn om du vill)
+        cityHeader.textContent = i;
         tableContainer.appendChild(cityHeader);
     }
 
-    // Skapa rader för varje stad
     for (let row = 0; row < numberOfCities; row++) {
         const rowHeader = document.createElement("div");
         rowHeader.classList.add("cell", "head_row");
-        rowHeader.textContent = `${row}-${cities[row].name}`; // Stadenamn och index
+        rowHeader.textContent = `${row}-${cities[row].name}`;
         tableContainer.appendChild(rowHeader);
 
-        // Sätt "even_row" CSS-klassen för varannan rad (för att ge olika bakgrundsfärg om du vill)
         if (row % 2 === 0) {
             rowHeader.classList.add("even_row");
         }
 
-        // Skapa kolumnceller för varje stad
         for (let col = 0; col < numberOfCities; col++) {
             const distanceCell = document.createElement("div");
             distanceCell.classList.add("cell");
 
-            // Sätt "even_row" CSS-klassen för varannan kolumn (för att ge olika bakgrundsfärg om du vill)
             if (col % 2 === 0) {
                 distanceCell.classList.add("even_col");
             }
 
-            // Om raden är samma som kolumnen (dvs. staden är samma), lämna cellen tom
             if (row === col) {
                 distanceCell.textContent = " ";
             } else {
                 let distance = null;
 
-                // Gå igenom alla avstånd och hitta avståndet mellan städerna
                 for (let i = 0; i < distances.length; i++) {
                     if (distances[i].city1 === row && distances[i].city2 === col) {
                         distance = distances[i];
@@ -150,11 +133,10 @@ function createDistanceTable() {
                     }
                 }
 
-                // Om vi har hittat ett avstånd, sätt det i cellen
                 if (distance !== null) {
-                    distanceCell.textContent = distance.distance / 10; // Visa avståndet utan avrundning
+                    distanceCell.textContent = distance.distance / 10;
                 } else {
-                    distanceCell.textContent = ""; // Lämna cellen tom om inget avstånd finns
+                    distanceCell.textContent = "";
                 }
             }
 
@@ -164,4 +146,3 @@ function createDistanceTable() {
 }
 
 createDistanceTable();
-
