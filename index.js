@@ -72,3 +72,13 @@ function findNearestAndFarthestCity(cityFinder) {
             }
         }
     }
+
+    // Uppdatera informationen för närmaste stad
+    if (closestCityIndex !== -1) {
+        const cityDivs = document.querySelectorAll(".cityBox");
+        cityDivs[closestCityIndex].classList.add("closest");
+        const distanceInMil = minDistance / 10;
+        cityDivs[closestCityIndex].textContent = `${cities[closestCityIndex].name} ligger ${distanceInMil} mil bort`;
+        document.getElementById("closest").textContent = `${cities[closestCityIndex].name}`;
+    }
+
