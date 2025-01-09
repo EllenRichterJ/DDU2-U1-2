@@ -24,6 +24,10 @@ function findCity() {
             document.querySelector("h2").textContent = cities[i].name + " (" + cities[i].country + ")";
             document.title = cities[i].name;
             cityFound = true;
+
+            const cityDivs = document.querySelectorAll(".cityBox");
+            cityDivs[i].classList.add("target");
+
             findNearestAndFarthestCity(cityFinder);
             break;
         }
