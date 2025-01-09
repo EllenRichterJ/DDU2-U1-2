@@ -91,3 +91,24 @@ function findNearestAndFarthestCity(cityFinder) {
         document.getElementById("furthest").textContent = `${cities[farthestCityIndex].name}`;
     }
 }
+
+function createDistanceTable() {
+    const tableContainer = document.getElementById("table");
+    tableContainer.innerHTML = ''; // Rensa tidigare innehåll i tabellen
+
+    const numberOfCities = 39;
+
+    // Skapa den första cellen som är tom (rubrik i övre vänstra hörnet)
+    const emptyHeader = document.createElement("div");
+    emptyHeader.classList.add("cell", "head_column");
+    emptyHeader.textContent = "";
+    tableContainer.appendChild(emptyHeader);
+
+    // Skapa rubrikrader för varje stad (i första raden)
+    for (let i = 0; i < numberOfCities; i++) {
+        const cityHeader = document.createElement("div");
+        cityHeader.classList.add("cell", "head_column");
+        cityHeader.textContent = i; // Här sätts index för städer (kan ändras till stadens namn om du vill)
+        tableContainer.appendChild(cityHeader);
+    }
+
