@@ -48,3 +48,27 @@ function findNearestAndFarthestCity(cityFinder) {
     let closestCityIndex = -1;
     let farthestCityIndex = -1;
 
+    // Gå igenom alla avstånd
+    for (let i = 0; i < distances.length; i++) {
+        const distance = distances[i];
+        let otherCityIndex = -1;
+
+        // Kontrollera om cityFinder matchar någon av städerna
+        if (cityFinder === cities[distance.city1].name) {
+            otherCityIndex = distance.city2;
+        } else if (cityFinder === cities[distance.city2].name) {
+            otherCityIndex = distance.city1;
+        }
+
+        // Om staden matchar, kontrollera avståndet
+        if (otherCityIndex !== -1) {
+            if (distance.distance < minDistance) {
+                minDistance = distance.distance;
+                closestCityIndex = otherCityIndex;
+            }
+            if (distance.distance > maxDistance) {
+                maxDistance = distance.distance;
+                farthestCityIndex = otherCityIndex;
+            }
+        }
+    }
