@@ -82,3 +82,12 @@ function findNearestAndFarthestCity(cityFinder) {
         document.getElementById("closest").textContent = `${cities[closestCityIndex].name}`;
     }
 
+    // Uppdatera informationen för längsta stad
+    if (farthestCityIndex !== -1) {
+        const cityDivs = document.querySelectorAll(".cityBox");
+        cityDivs[farthestCityIndex].classList.add("furthest");
+        const distanceInMil = maxDistance / 10;
+        cityDivs[farthestCityIndex].textContent = `${cities[farthestCityIndex].name} ligger ${distanceInMil} mil bort`;
+        document.getElementById("furthest").textContent = `${cities[farthestCityIndex].name}`;
+    }
+}
