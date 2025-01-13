@@ -119,6 +119,10 @@ function createDistanceTable() {
                 distanceCell.classList.add("even_col");
             }
 
+            if (row % 2 === 0) {
+                distanceCell.classList.add("even_row");
+            }
+
             if (row === col) {
                 distanceCell.textContent = " ";
             } else {
